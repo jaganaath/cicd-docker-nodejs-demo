@@ -24,7 +24,6 @@ pipeline {
         stage('Unit Testing') {
             steps {
                 echo 'Unit testing'
-                //sh 'make unit-test'
             }
         }
         stage('Push Image') {
