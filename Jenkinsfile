@@ -38,7 +38,7 @@ pipeline {
                     sh "docker push cicd_demo:${env.APP_TAG}"
                 }
                 */
-                sh "DOCKER_HUB_USER=${DOCKER_HUB_USER} DOCKER_HUB_PWD=${DOCKER_HUB_PWD} make docker-push"
+                sh "make docker-push"
             }
         }
     }
