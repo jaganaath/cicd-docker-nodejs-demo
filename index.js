@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-
+var constants = require('./constants');
 require('./default_runs/prod')(app);
 /*
 const git_commit_hash = require('child_process')
@@ -15,9 +15,9 @@ app.get('/status', (req, res) => {
     const status_response = {
         "myapplication": [
           {
-            "version": "1.0",
-            "description": "pre-interview technical test",
-            "lastcommitsha": process.env.GIT_COMMIT_HASH
+            "version": constants.version,
+            "description": constants.description,
+            "lastcommitsha": process.env.ENV_GIT_COMMIT_HASH
           }
         ]
       };
