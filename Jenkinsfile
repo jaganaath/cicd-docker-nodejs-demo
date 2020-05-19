@@ -23,7 +23,9 @@ pipeline {
         stage('Push Image') {
             steps {
               withCredentials([usernamePassword(usernameVariable: 'DOCKER_HUB_USER', passwordVariable: 'DOCKER_HUB_PWD', credentialsId: 'docker-hub-credentials')]) {
-                sh "DOCKER_HUB_USER=${DOCKER_HUB_USER} DOCKER_HUB_PWD=${DOCKER_HUB_PWD} make docker-push"
+                sh "docker login -u ${DOCKER_HUB_USER} -p ${DOCKER_HUB_PWD}"
+                sh "DOCKER_HUB_USER=${DOCKER_HUB_USER} DOCKER_HUB_PWD=${DOCKER_HUB_PWD}"
+                //sh "DOCKER_HUB_USER=${DOCKER_HUB_USER} DOCKER_HUB_PWD=${DOCKER_HUB_PWD} make docker-push"
               }
             }
         }
