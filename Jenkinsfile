@@ -13,17 +13,13 @@ pipeline {
             steps {
                 script {
                     dockerImage = docker.build registry + ":${env.APP_TAG}"
-                   // dockerImage = docker.build(registry + ":${env.APP_TAG}", "--build-arg GIT_COMMIT_HASH=${APP_TAG} --network host -f Dockerfile .")
                 }
             }
         }
         stage('Unit Testing') {
             steps {
                 echo 'Unit testing'
-                sh "docker run -it -d -p 3000:3000 ${env.REGISTRY}:${env.APP_TAG}"
-                sh "npm install"
-                sh "node index.js"
-                sh "npm run test"
+                sh "docker run -it -d -p 3000:3000 ${env.REGISTRY}:${env.APP_TAG} npm install"
             }
         }
         stage('Push Image') {
