@@ -3,7 +3,7 @@ pipeline {
     agent any
 
     environment {
-      APP_TAG = "${GIT_COMMIT[0..6]}"
+      APP_TAG = "${GIT_REVISION,length=6}"
       REGISTRY = "jaganaath/test"
     }
     stages {
