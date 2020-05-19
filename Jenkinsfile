@@ -1,5 +1,7 @@
 
 pipeline {
+    agent any
+    
     environment {
       APP_TAG = "${GIT_COMMIT[0..6]}"
       REGISTRY = "jaganaath/test"
