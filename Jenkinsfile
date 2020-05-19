@@ -19,6 +19,7 @@ pipeline {
         stage('Unit Testing') {
             steps {
                 echo 'Unit testing'
+                sh "docker stop $(docker ps -a -q)"
                 sh "docker run -it -d -p 3000:3000 ${env.REGISTRY}:${env.APP_TAG} npm install"
             }
         }
