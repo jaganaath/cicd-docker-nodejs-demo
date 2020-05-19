@@ -46,8 +46,9 @@ pipeline {
                 }
                 */
                 script {
-                    docker.withRegistry( '', REGISTRY_CREDENTIALS ) {
-                    dockerImage.push()
+                        docker.withRegistry( '', REGISTRY_CREDENTIALS ) {
+                        dockerImage.push()
+                    }
                 }
             }
         }
