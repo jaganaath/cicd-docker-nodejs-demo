@@ -9,6 +9,7 @@ pipeline {
     stages {
         stage('Build Image') {
             steps {
+                echo 'Building image ${evn.APP_TAG}'
                 sh 'APP_TAG=${env.APP_TAG} make build-image'
             }
         }
