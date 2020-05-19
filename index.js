@@ -1,6 +1,12 @@
 const express = require('express');
 const app = express();
 
+require('./default_runs/prod')(app);
+/*
+const git_commit_hash = require('child_process')
+  .execSync('git rev-parse --short HEAD')
+  .toString().trim();
+*/
 app.get('/', (req, res) => {
     res.send("Hello World");
 });
@@ -11,7 +17,7 @@ app.get('/status', (req, res) => {
           {
             "version": "1.0",
             "description": "pre-interview technical test",
-            "lastcommitsha": "abc57858585"
+            "lastcommitsha": process.env.GIT_COMMIT_HASH
           }
         ]
       };
