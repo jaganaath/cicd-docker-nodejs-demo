@@ -1,13 +1,13 @@
 {
   "name": "cicd_demo",
   "version": "1.0.0",
-  "description": "",
+  "description": "CI / CD Demo for Innabler",
   "main": "index.js",
   "scripts": {
     "test": "mocha"
   },
   "keywords": [],
-  "author": "",
+  "author": "Jaganaath Jayakumar",
   "license": "ISC",
   "dependencies": {
     "compression": "^1.7.4",

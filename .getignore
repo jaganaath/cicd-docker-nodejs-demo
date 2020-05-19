@@ -1,4 +1,4 @@
-# Don't check auto-generated stuff into git
+# Avoid pushing node_modules
 node_modules
 
 # Cruft

@@ -1,3 +1,4 @@
+// Default Requirements for security and performance
 const helmet = require('helmet');
 const compression = require('compression');
 
