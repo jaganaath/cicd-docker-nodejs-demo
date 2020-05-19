@@ -10,10 +10,8 @@ pipeline {
         stage('Build Image') {
             steps {
                 echo "Building image ${env.APP_TAG}"
-                //sh "docker run -v $(which docker):/usr/bin/docker"
-                echo "Path: $PATH"
-                sh "docker build -t cicd_demo:${env.APP_TAG} . --build-arg GIT_COMMIT_HASH=${env.APP_TAG}"
-                //sh "APP_TAG=${env.APP_TAG} make build-image"
+                //sh "docker build -t cicd_demo:${env.APP_TAG} . --build-arg GIT_COMMIT_HASH=${env.APP_TAG}"
+                sh "APP_TAG=${env.APP_TAG} make build-image"
             }
         }
         /*
