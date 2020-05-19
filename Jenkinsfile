@@ -22,11 +22,16 @@ pipeline {
         }
         stage('Push Image') {
             steps {
+                /*
               withCredentials([usernamePassword(usernameVariable: 'DOCKER_HUB_USER', passwordVariable: 'DOCKER_HUB_PWD', credentialsId: 'docker-hub-credentials')]) {
                 sh "docker login -u ${DOCKER_HUB_USER} -p ${DOCKER_HUB_PWD}"
                 sh "DOCKER_HUB_USER=${DOCKER_HUB_USER} DOCKER_HUB_PWD=${DOCKER_HUB_PWD}"
                 //sh "DOCKER_HUB_USER=${DOCKER_HUB_USER} DOCKER_HUB_PWD=${DOCKER_HUB_PWD} make docker-push"
               }
+              */
+              docker.withRegistry('https://registry.hub.docker.com', 'jj-test-docker-hub') {
+                    sh "docker push cicd_demo:${env.APP_TAG}"
+                }
             }
         }
     }
