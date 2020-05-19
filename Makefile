@@ -1,4 +1,4 @@
-BASE_IMAGE = cicd_demo:$(APP_TAG)
+BASE_IMAGE = jaganaath/test:$(APP_TAG)
 
 .EXPORT_ALL_VARIABLES:
 

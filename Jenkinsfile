@@ -5,13 +5,20 @@ pipeline {
     environment {
       APP_TAG = "${GIT_COMMIT[0..7]}"
       REGISTRY = "jaganaath/test"
+      REGISTRY_CREDENTIALS = 'jj-test-docker-hub'
+      dockerImage = ''
     }
     stages {
         stage('Build Image') {
             steps {
+                /*
                 echo "Building image ${env.APP_TAG}"
                 //sh "docker build -t cicd_demo:${env.APP_TAG} . --build-arg GIT_COMMIT_HASH=${env.APP_TAG}"
                 sh "APP_TAG=${env.APP_TAG} make build-image"
+                */
+                script {
+                    dockerImage = docker.build registry + ":${env.APP_TAG}"
+                }
             }
         }
         stage('Unit Testing') {
@@ -38,7 +45,10 @@ pipeline {
                     sh "docker push cicd_demo:${env.APP_TAG}"
                 }
                 */
-                sh "make docker-push"
+                script {
+                    docker.withRegistry( '', REGISTRY_CREDENTIALS ) {
+                    dockerImage.push()
+                }
             }
         }
     }
