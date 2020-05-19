@@ -4,7 +4,7 @@ pipeline {
     // Environment variables
     environment {
       APP_TAG = "${GIT_COMMIT[0..7]}"   // Gets the last commit hash
-      REGISTRY = "jaganaath/test"   // Docker Hub Registry
+      REGISTRY = "jaganaath/cicd_demo_innablr"   // Docker Hub Registry
       REGISTRY_CREDENTIALS = 'jj-test-docker-hub'   // Jenkins configured credentials for DockerHub
       dockerImage = ''
     }
