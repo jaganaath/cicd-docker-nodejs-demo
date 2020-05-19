@@ -33,7 +33,7 @@ pipeline {
                     sh "docker push cicd_demo:${env.APP_TAG}"
                 }
               */                
-              withDockerRegistry([credentialsId: 'jj-test-docker-hub', url: 'https://index.docker.io/v1/']) {
+              withDockerRegistry([credentialsId: 'jj-test-docker-hub', url: 'https://registry.hub.docker.com']) {
                     sh "docker push cicd_demo:${env.APP_TAG}"
                 }
             }
