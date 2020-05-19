@@ -11,7 +11,7 @@ pipeline {
             steps {
                 echo "Building image ${env.APP_TAG}"
                 //sh "docker run -v $(which docker):/usr/bin/docker"
-                sh "export PATH=$PATH:/usr/local/bin"
+                echo "Path: $PATH"
                 sh "docker build -t cicd_demo:${env.APP_TAG} . --build-arg GIT_COMMIT_HASH=${env.APP_TAG}"
                 //sh "APP_TAG=${env.APP_TAG} make build-image"
             }
