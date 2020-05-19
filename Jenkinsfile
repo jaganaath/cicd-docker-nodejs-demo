@@ -12,7 +12,7 @@ pipeline {
         stage('Build Image') {
             steps {
                 script {
-                    dockerImage = docker.build registry + ":${env.APP_TAG}" + "--build-arg GIT_COMMIT_HASH=${APP_TAG}"
+                    dockerImage = docker.build registry + ":${env.APP_TAG}" + --build-arg GIT_COMMIT_HASH="${APP_TAG}"
                     //dockerImage = docker.build(registry + ":${env.APP_TAG}", "--build-arg GIT_COMMIT_HASH=${APP_TAG}")
                 }
             }
