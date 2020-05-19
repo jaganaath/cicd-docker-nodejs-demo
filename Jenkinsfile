@@ -32,10 +32,13 @@ pipeline {
               docker.withRegistry('https://registry.hub.docker.com', 'jj-test-docker-hub') {
                     sh "docker push cicd_demo:${env.APP_TAG}"
                 }
-              */                
+              */   
+              /*             
               withDockerRegistry([credentialsId: 'jj-test-docker-hub', url: 'https://registry.hub.docker.com']) {
                     sh "docker push cicd_demo:${env.APP_TAG}"
                 }
+                */
+                sh "DOCKER_HUB_USER=${DOCKER_HUB_USER} DOCKER_HUB_PWD=${DOCKER_HUB_PWD} make docker-push"
             }
         }
     }
