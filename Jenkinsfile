@@ -21,6 +21,8 @@ pipeline {
             steps {
                 echo 'Unit testing'
                 sh "docker run -it -d -p 3000:3000 ${env.REGISTRY}:${env.APP_TAG}"
+                sh "npm install"
+                sh "node index.js"
                 sh "npm run test"
             }
         }
