@@ -1,7 +1,7 @@
 
 pipeline {
     agent any
-    
+
     environment {
       APP_TAG = "${GIT_COMMIT[0..6]}"
       REGISTRY = "jaganaath/test"
@@ -14,6 +14,7 @@ pipeline {
         }
         stage('Unit Testing') {
             steps {
+                echo 'Unit testing'
                 //sh 'make unit-test'
             }
         }
@@ -28,7 +29,7 @@ pipeline {
             }
             */
             steps {
-              withCredentials([usernameVariable: 'DOCKER_HUB_USER', passwordVariable: 'DOCKER_HUB_PWD', credentialsId: 'docker-hub-credentials']) {
+              withCredentials([usernamePassword(usernameVariable: 'DOCKER_HUB_USER', passwordVariable: 'DOCKER_HUB_PWD', credentialsId: 'docker-hub-credentials')]) {
                 sh 'DOCKER_HUB_USER=${DOCKER_HUB_USER} DOCKER_HUB_PWD=${DOCKER_HUB_PWD} make docker-push'
               }
             }
