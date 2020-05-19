@@ -3,7 +3,7 @@ ARG GIT_COMMIT_HASH
 FROM alpine:latest
 RUN apk add --no-cache nodejs npm
 
-WORKDIR /cicd_app
+#WORKDIR /cicd_app
 COPY . /cicd_app
 
 RUN npm install
